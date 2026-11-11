@@ -1,0 +1,71 @@
+/* the AFK planner, activity first: the activity on the left, its tasks beside it */
+#plannerTasks.act { display: grid; grid-template-columns: minmax(0, 560px) minmax(0, 1fr); gap: 16px; align-items: start; }
+.act-pane { background: var(--panel); border: 1px solid var(--line); border-radius: 6px; padding: 16px; display: grid; gap: 14px; min-width: 0; }
+.act-head { display: flex; gap: 12px; align-items: center; }
+.act-big { flex: none; width: 48px; height: 48px; display: grid; place-items: center; background: var(--panel-2); border-radius: 6px; }
+.act-big img { width: 40px; height: 40px; object-fit: contain; image-rendering: pixelated; }
+.act-names { min-width: 0; }
+.act-title { margin: 0; font: 700 17px/1.25 var(--body); }
+.act-pill { display: inline-block; margin-left: 8px; padding: 2px 8px; border-radius: 999px; background: var(--grass-soft); color: var(--grass); font-size: 11px; font-weight: 700; vertical-align: 2px; }
+.act-pill.planned { background: var(--sky-soft); color: var(--sky); }
+.act-where { display: block; color: var(--muted); }
+.act-fields { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px 12px; align-items: start; }
+.act-fld.fld { width: auto; min-width: 0; gap: 5px; }
+.act-hint { color: var(--muted); font-size: 11px; min-height: 1.2em; }
+.act-fld.want input { border-color: var(--coin); background: var(--coin-soft); }
+.act-fld.want .act-hint { color: var(--coin); font-weight: 600; }
+.act-fld .act-chip, .act-fld .act-add, .act-fld .act-goal-form { justify-self: start; }
+.act-derived { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; padding: 10px 12px; background: var(--panel-2); border-radius: 6px; }
+.act-d { display: grid; gap: 4px; justify-items: start; min-width: 0; }
+.act-d b { font-size: 15px; font-variant-numeric: tabular-nums; }
+.act-pane > .kpk-how { margin-top: -6px; }
+/* goal chips: the goal, or "+ Goal" to make one; a click opens a box in place */
+.act-chip, .act-add { display: inline-block; padding: 3px 9px; border-radius: 999px; font: 700 12px/1.2 var(--body); white-space: nowrap; cursor: pointer; }
+.act-chip { background: transparent; border: 1px solid var(--grass); color: var(--grass); }
+.act-chip.static { cursor: default; }
+.act-add { background: transparent; border: 1px dashed var(--line); color: var(--muted); font-weight: 600; }
+.act-add:hover, .act-chip:not(.static):hover { border-color: var(--grass); color: var(--ink); }
+.act-goal-form input { width: 96px; padding: 3px 8px; font-size: 12px; border-color: var(--grass); }
+/* drops, as the game's monster screen lists them */
+.act-drops-head { margin-bottom: -6px; }
+.act-drops { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+.act-drop { display: flex; gap: 10px; align-items: center; min-width: 0; padding: 8px 10px; background: color-mix(in srgb, var(--grass) 14%, var(--panel)); border: 1px solid color-mix(in srgb, var(--grass) 40%, var(--line)); border-radius: 4px; }
+.act-drop.has-task { border-color: var(--grass); box-shadow: inset 0 0 0 1px var(--grass); }
+.act-drop-ic { flex: none; width: 40px; height: 40px; display: grid; place-items: center; background: color-mix(in srgb, #000 18%, transparent); border-radius: 3px; }
+.act-drop-ic img { width: 34px; height: 34px; object-fit: contain; image-rendering: pixelated; }
+.act-drop-t { flex: 1; min-width: 0; display: grid; gap: 2px; }
+.act-drop-t b { font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.act-odds { font-weight: 700; font-size: 15px; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.act-drop-side { flex: none; display: grid; gap: 6px; justify-items: end; text-align: right; }
+.act-rate { color: var(--ink); font-size: 13px; font-weight: 600; white-space: nowrap; font-variant-numeric: tabular-nums; }
+.act-more { justify-self: start; background: transparent; border: 0; padding: 0; color: var(--muted); font-weight: 500; font-size: 12px; cursor: pointer; }
+.act-more:hover { color: var(--ink); text-decoration: underline; }
+/* the tasks: read only, and each card is its own progress bar, filling from the left like the panel's */
+.act-cards { display: grid; gap: 10px; align-content: start; min-width: 0; }
+.act-cards .plan-group { margin: 2px 0 0; }
+.tcard { position: relative; overflow: hidden; display: grid; gap: 6px; padding: 10px 12px 12px; background: var(--panel); border: 1px solid var(--line); border-radius: 6px; cursor: pointer; transition: background-color .5s; }
+.tcard > :not(.tcard-fill) { position: relative; z-index: 1; }
+.tcard-fill { position: absolute; inset: 0 auto 0 0; z-index: 0; pointer-events: none; background: color-mix(in srgb, var(--grass) 24%, transparent); box-shadow: inset 0 -3px 0 var(--grass); }
+.tcard.done .tcard-fill { background: color-mix(in srgb, var(--grass) 34%, transparent); }
+.tcard.warn { border-color: color-mix(in srgb, var(--coin) 60%, var(--line)); }
+.tcard:hover { border-color: var(--muted); }
+.tcard:focus-visible { outline: 2px solid var(--grass); outline-offset: 2px; }
+.tcard.jump { outline: 2px solid var(--coin); outline-offset: -2px; }
+.tcard-top { display: flex; gap: 10px; align-items: center; min-width: 0; }
+.tcard-ic { flex: none; width: 32px; height: 32px; object-fit: contain; image-rendering: pixelated; }
+.tcard-names { flex: 1; min-width: 0; display: grid; gap: 1px; }
+.tcard-title { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.tcard-line { color: var(--muted); }
+.tcard-line:empty { display: none; }
+.tcard-when { flex: none; display: grid; justify-items: end; text-align: right; }
+.tcard-wait { font-size: 16px; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.tcard-eta { color: var(--muted); white-space: nowrap; }
+.tcard-note { color: var(--muted); }
+.tcard.warn .tcard-note { color: var(--coin); font-weight: 600; }
+@media (max-width: 1100px) {
+  #plannerTasks.act { grid-template-columns: minmax(0, 1fr); }
+}
+@media (max-width: 560px) {
+  .act-fields, .act-derived { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .act-drops { grid-template-columns: minmax(0, 1fr); }
+}

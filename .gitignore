@@ -1,0 +1,15 @@
+# Never published: the game's sign-in keys, and game art
+sync-config.json
+icons/
+maps/
+
+# Built and test output
+dist/
+test/tmp/
+test/shots/
+node_modules/
+*.log
+
+# Local working files
+audit-report.md
+activity-preview.html

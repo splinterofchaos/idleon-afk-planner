@@ -1,0 +1,22 @@
+/* plan an activity */
+#plannerPick:empty { display: none; }
+.pick-sheet { display: grid; gap: 12px; padding: 12px; }
+.pick-btn { display: inline-flex; align-items: center; gap: 8px; background: transparent; border: 2px solid transparent; border-radius: 8px; padding: 2px; cursor: pointer; color: var(--ink); }
+.pick-btn img { image-rendering: pixelated; display: block; }
+.pick-btn:hover:not(:disabled) { border-color: var(--line); }
+.pick-btn:focus-visible { outline: 2px solid var(--sky); outline-offset: 1px; }
+.pick-btn[aria-pressed="true"] { border-color: var(--grass); background: var(--grass-soft); }
+.pick-btn:disabled { opacity: .3; cursor: default; }
+.pick-worlds { display: flex; flex-wrap: wrap; gap: 4px; }
+.pick-world img { width: 112px; height: auto; max-width: 100%; }
+.pick-skills { display: grid; grid-template-columns: repeat(4, minmax(0, 72px)); gap: 6px; }
+.pick-skill { flex-direction: column; justify-content: flex-end; gap: 2px; min-height: 68px; padding: 4px 2px; }
+.pick-skill img { width: 40px; height: 40px; object-fit: contain; }
+.pick-lv { font-size: 12px; font-variant-numeric: tabular-nums; color: var(--muted); }
+.pick-targets { display: grid; grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); gap: 4px; }
+.pick-target { justify-content: flex-start; text-align: left; padding: 4px 8px; border-color: var(--line); min-width: 0; }
+.pick-target img { width: 28px; height: 28px; object-fit: contain; flex: none; }
+.pick-words { display: grid; min-width: 0; }
+.pick-name { overflow-wrap: anywhere; }
+.pick-place { white-space: normal; }
+.pick-group { margin: 6px 0 -2px; font-size: 11px; }

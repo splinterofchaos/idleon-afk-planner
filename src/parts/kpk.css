@@ -1,0 +1,28 @@
+/* Kills per kill: the AFK stats box's "How it's worked out" list */
+.kpk-how { display: grid; gap: 6px; min-width: 0; }
+.kpk-note { margin: 0; color: var(--muted); white-space: normal; }
+.kpk-disclose > summary { cursor: pointer; display: flex; flex-wrap: wrap; align-items: baseline; gap: 2px 10px; font-weight: 600; }
+.kpk-disclose > summary::before { content: '▸'; color: var(--muted); }
+.kpk-disclose[open] > summary::before { content: '▾'; }
+.kpk-disclose > summary::-webkit-details-marker { display: none; }
+.kpk-sum-count { font-weight: 400; color: var(--muted); }
+.kpk-list { display: grid; margin-top: 6px; border-top: 1px solid var(--line); }
+.kpk-row { display: grid; grid-template-columns: minmax(0, 1fr) minmax(58px, max-content) 84px; gap: 4px 10px; align-items: center; padding: 6px 8px; border-bottom: 1px solid var(--line); }
+.kpk-row:last-child { border-bottom: 0; }
+.kpk-row.missing { box-shadow: inset 3px 0 0 var(--coin); background: var(--coin-soft); }
+.kpk-words { display: grid; gap: 1px; min-width: 0; }
+.kpk-label { overflow-wrap: anywhere; }
+.kpk-hint { white-space: normal; overflow-wrap: anywhere; color: var(--muted); }
+.kpk-row.missing .kpk-hint { color: inherit; }
+.kpk-value { text-align: right; white-space: nowrap; font-variant-numeric: tabular-nums; }
+.kpk-row.missing .kpk-value { font-size: 12px; color: var(--muted); }
+.kpk-row input { width: 100%; min-width: 0; box-sizing: border-box; }
+@media (max-width: 480px) {
+  .kpk-row { grid-template-columns: minmax(0, 1fr) 84px; }
+  .kpk-words { grid-column: 1 / -1; }
+  .kpk-value { text-align: left; }
+}
+
+.kpk-token { display: inline-flex; align-items: center; gap: 4px; white-space: nowrap; cursor: pointer; }
+.kpk-token[hidden] { display: none; }
+.kpk-token input { width: 16px; height: 16px; margin: 0; }

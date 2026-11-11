@@ -1,0 +1,10 @@
+/* Player tab */
+.player-tab { display: grid; gap: 12px; align-content: start; }
+.pv-find { flex: 1 1 260px; min-width: 0; }
+.pv-count { align-self: flex-end; color: var(--muted); padding-bottom: 8px; }
+#playerTasks { display: grid; gap: 8px; align-content: start; }
+.pv-archive { display: grid; gap: 8px; }
+.pv-archive > summary { cursor: pointer; }
+.pv-archive[open] > summary { margin-bottom: 8px; }
+.pv-up { color: var(--grass); }
+.pv-down { color: var(--muted); }

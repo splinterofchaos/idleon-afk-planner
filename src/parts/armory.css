@@ -1,0 +1,80 @@
+/* World: Royal Armory */
+.armory-tab { padding: 4px 0 30px; }
+.arm-head { display: flex; flex-wrap: wrap; align-items: flex-end; gap: 10px 18px; margin-bottom: 12px; }
+.arm-title h2 { font: 700 22px var(--display); margin: 0; }
+.arm-title p { margin: 2px 0 0; color: var(--muted); font-size: 12.5px; }
+.arm-none { color: var(--muted); }
+.arm-clock { display: flex; gap: 8px; flex-wrap: wrap; margin-left: auto; }
+.arm-tile { background: var(--panel); border: 1px solid var(--line); border-radius: 10px; padding: 6px 12px; min-width: 110px; }
+.arm-tile b { display: block; font-size: 16px; font-variant-numeric: tabular-nums; }
+.arm-tile span { font-size: 11.5px; color: var(--muted); }
+.arm-tile.warn { border-color: var(--coin); background: var(--coin-soft); }
+.armory-tab .s-late { --c: var(--bad); --cs: var(--bad-soft); }
+.armory-tab .s-today { --c: var(--coin); --cs: var(--coin-soft); }
+.armory-tab .s-empty { --c: var(--grass); --cs: var(--grass-soft); }
+.armory-tab .s-idle, .armory-tab .s-unknown { --c: var(--muted); --cs: var(--panel); }
+.arm-counts { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 10px; }
+.arm-pill { display: inline-flex; align-items: center; gap: 7px; border: 1px solid var(--line); background: var(--panel); color: var(--ink); border-radius: 999px; padding: 5px 12px 5px 8px; font: 600 13px var(--body); cursor: pointer; }
+.arm-pill i { width: 12px; height: 12px; border-radius: 50%; background: var(--c); }
+.arm-pill[aria-pressed="true"] { outline: 2px solid var(--ink); outline-offset: 1px; }
+.arm-worlds { display: flex; gap: 6px; margin-bottom: 10px; flex-wrap: wrap; }
+.arm-wtab { border: 1px solid var(--line); background: var(--panel); color: var(--muted); border-radius: 8px; padding: 6px 12px; font: 600 13px var(--body); cursor: pointer; display: flex; gap: 8px; align-items: center; }
+.arm-wtab[aria-selected="true"] { color: var(--ink); border-color: var(--muted); box-shadow: inset 0 -2px 0 var(--ink); }
+.arm-wtab .bad { color: var(--bad); font-size: 12px; } .arm-wtab .ok { color: var(--grass); font-size: 12px; }
+.arm-card { background: var(--panel); border: 1px solid var(--line); border-radius: 12px; padding: 10px; margin-bottom: 12px; }
+.arm-map { width: 100%; height: auto; display: block; }
+.arm-shade { fill: var(--bg); opacity: .45; }
+.arm-link { fill: none; stroke: var(--ink); opacity: .7; stroke-width: 3.5; stroke-linecap: round; }
+.arm-head { fill: var(--ink); opacity: .7; }
+.arm-head.sv { fill: var(--bad); opacity: .9; }
+.arm-head.sup { fill: var(--sky); opacity: .9; }
+.arm-link.sv { stroke: var(--bad); opacity: .9; stroke-width: 4.5; }
+.arm-link.sup { stroke: var(--sky); opacity: .9; stroke-dasharray: 6 5; stroke-width: 3; }
+.arm-op { fill: #111a17; stroke: var(--ink); stroke-width: 1.5; } /* dark in both themes: the unit colours read on it */
+.arm-op.sv { stroke: var(--bad); fill: var(--bad-soft); }
+.arm-op.sup { stroke: var(--sky); fill: var(--sky-soft); }
+.arm-opname { fill: var(--ink); opacity: .85; font: 9.5px var(--body); text-anchor: middle; paint-order: stroke; stroke: var(--bg); stroke-width: 3px; }
+/* unit counts by an outpost: worker brown, trader green, guard grey, surveyor purple */
+.armory-tab { --u0: #d0904e; --u1: #5fcf73; --u2: #b9bfc4; --u3: #b98cf2; } /* light enough to read on the map */
+.arm-units { font: 700 10.5px var(--body); text-anchor: middle; letter-spacing: .02em; }
+.arm-units .u0 { fill: var(--u0); } .arm-units .u1 { fill: var(--u1); } .arm-units .u2 { fill: var(--u2); } .arm-units .u3 { fill: var(--u3); }
+.arm-u { font-weight: 700; }
+.arm-u.u0 { color: var(--u0); } .arm-u.u1 { color: var(--u1); } .arm-u.u2 { color: var(--u2); } .arm-u.u3 { color: var(--u3); }
+.arm-node { cursor: pointer; }
+.arm-node .bg { fill: var(--cs); stroke: var(--c); stroke-width: 2; }
+.arm-node .ring { fill: none; stroke: var(--c); stroke-width: 5; }
+.arm-node text { fill: var(--ink); font: 700 12px var(--body); text-anchor: middle; paint-order: stroke; stroke: var(--bg); stroke-width: 4px; }
+.arm-node text.eta { font-size: 13px; }
+.arm-node.s-late text.eta { fill: var(--bad); }
+.arm-node.hl .bg { stroke-width: 4; }
+.arm-node.dim { opacity: .25; }
+.arm-legend { display: flex; flex-wrap: wrap; gap: 14px; font-size: 12px; color: var(--muted); padding: 4px 6px 0; }
+.arm-legend span { display: inline-flex; gap: 6px; align-items: center; }
+.arm-l { display: inline-block; width: 24px; height: 0; border-top: 3px solid var(--ink); opacity: .8; }
+.arm-l.sv { border-top: 4px solid var(--bad); opacity: 1; }
+.arm-l.sup { border-top: 3px dashed var(--sky); opacity: 1; }
+.arm-rows { display: grid; gap: 6px; }
+.arm-row { position: relative; isolation: isolate; overflow: hidden; display: grid; grid-template-columns: 92px minmax(120px, 1.1fr) minmax(150px, 1.3fr) minmax(170px, 1.6fr) 160px; gap: 12px; align-items: center; background: var(--panel); border: 1px solid var(--line); border-left: 4px solid var(--c); border-radius: 10px; padding: 9px 12px; }
+.arm-row.hl { border-color: var(--c); }
+.arm-row > * { position: relative; z-index: 1; }
+.arm-row > .arm-fill { position: absolute; z-index: 0; left: 0; top: 0; bottom: 0; pointer-events: none; background: color-mix(in srgb, var(--c) 22%, transparent); box-shadow: inset 0 -3px 0 var(--c); }
+.arm-left b { font: 700 13px/1.2 var(--body); font-variant-numeric: tabular-nums; }
+.arm-chip { font: 700 11.5px var(--body); color: var(--c); background: var(--cs); border-radius: 999px; padding: 3px 9px; text-align: center; white-space: nowrap; }
+.arm-nm b { font-size: 14.5px; }
+.arm-nm div, .arm-by div, .arm-left div { font-size: 12px; color: var(--muted); }
+.arm-by .src { color: var(--ink); font-size: 12.5px; }
+.arm-by .arm-meas { font-size: 11.5px; }
+.arm-by .sv { color: var(--bad); font-weight: 600; }
+.arm-eta { text-align: right; }
+.arm-eta b { font-size: 18px; font-variant-numeric: tabular-nums; display: block; line-height: 1.15; }
+.arm-eta div { font-size: 12px; color: var(--muted); }
+.arm-fix { grid-column: 2 / -1; font-size: 12.5px; background: var(--bad-soft); border-radius: 7px; padding: 5px 9px; display: flex; flex-wrap: wrap; gap: 4px 16px; }
+.arm-fix b { color: var(--coin); }
+@media (max-width: 820px) { .arm-row { grid-template-columns: 1fr 1fr; } .arm-eta { text-align: left; } .arm-fix { grid-column: 1 / -1; } }
+/* legend lines end in an arrowhead, as the map's do */
+.arm-l { position: relative; margin-right: 6px; color: var(--ink); } .arm-l.sv { color: var(--bad); } .arm-l.sup { color: var(--sky); }
+.arm-l::after { content: ''; position: absolute; right: -6px; top: -6px; border-left: 8px solid currentColor; border-top: 4.5px solid transparent; border-bottom: 4.5px solid transparent; }
+/* an outpost doing nothing, or draining an empty resource: a red ring and a red name */
+.arm-op-warn { fill: color-mix(in srgb, var(--bad) 25%, transparent); stroke: var(--bad); stroke-width: 2.5; }
+.arm-opname.warn { fill: var(--bad); font-weight: 700; opacity: 1; }
+.arm-lw { display: inline-block; width: 18px; height: 11px; border-radius: 4px; border: 2.5px solid var(--bad); background: color-mix(in srgb, var(--bad) 25%, transparent); }

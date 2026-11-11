@@ -1,0 +1,64 @@
+/* AFK planner tab, and the task editor Simulate reuses */
+/* the fields take the width of three, the usual number, so every editor's stats start at the same place; more wrap onto another row */
+.task-editor { display: grid; grid-template-columns: calc(3 * 92px + 2 * 10px) minmax(0, 1fr); gap: 10px 16px; align-items: start; padding: 12px 14px; border-bottom: 1px solid var(--line); transition: background-color .5s; }
+.task-editor:last-child { border-bottom: 0; }
+.task-editor.done { box-shadow: inset 4px 0 0 var(--grass); }
+.task-editor.afk { box-shadow: inset 4px 0 0 var(--sky); }
+.task-editor.jump { background: var(--coin-soft); outline: 2px solid var(--coin); outline-offset: -2px; }
+.ed-head { grid-column: 1 / -1; display: flex; align-items: center; gap: 8px; min-width: 0; }
+.ed-icon { flex: none; width: 28px; height: 28px; object-fit: contain; image-rendering: pixelated; }
+.ed-names { flex: 1; min-width: 0; }
+.ed-title { font-weight: 600; overflow-wrap: anywhere; }
+.ed-line { white-space: normal; overflow-wrap: anywhere; }
+.ed-star { flex: none; display: grid; place-items: center; width: 30px; height: 30px; padding: 0; background: transparent; border-color: transparent; color: var(--muted); }
+.ed-star * { pointer-events: none; }
+.ed-star svg { display: block; }
+.ed-star path { fill: none; stroke: currentColor; stroke-width: 2; stroke-linejoin: round; }
+.ed-star:hover:not(:disabled) { color: var(--coin); border-color: var(--coin); }
+.ed-star[aria-pressed="true"] { color: var(--coin); }
+.ed-star[aria-pressed="true"] path { fill: currentColor; }
+.task-editor .stats { order: 0; grid-column: auto; grid-template-columns: repeat(auto-fill, minmax(86px, 1fr)); gap: 10px 12px; min-width: 0; }
+.task-editor .stat { grid-column: auto; }
+.task-editor .small, .task-editor .pill { white-space: normal; overflow-wrap: anywhere; }
+.task-editor .pill.needs { line-height: 1.25; }
+.task-editor .big { white-space: normal; overflow-wrap: anywhere; line-height: 1.2; }
+.task-editor .track { width: 100%; max-width: 84px; }
+.s-real { grid-column: 1 / -1; }
+#plannerTasks { display: grid; gap: 8px; align-content: start; }
+.plan-group { margin: 6px 0 0; font-family: inherit; }
+.plan-group:first-child { margin-top: 0; }
+.plan-note { margin: 0; color: var(--muted); }
+.plan-head { display: flex; flex-wrap: wrap; align-items: flex-start; gap: 12px 24px; padding: 12px 14px; background: var(--panel); border: 1px solid var(--line); border-radius: 6px; }
+.plan-pick { flex: 0 1 300px; min-width: 0; }
+.plan-who { flex: 1 1 280px; display: flex; align-items: flex-start; gap: 10px; min-width: 0; }
+.plan-who .text { min-width: 0; }
+.plan-who .who-name { font-weight: 600; }
+.plan-who .doing { margin-top: 1px; }
+.plan-lines { display: flex; flex-wrap: wrap; gap: 0 12px; }
+.plan-lines .char-info { margin-top: 2px; max-width: 100%; }
+@container main (min-width: 700.02px) {
+  .task-editor .fields { display: flex; flex-wrap: wrap; }
+}
+@container main (max-width: 860px) {
+  .task-editor { grid-template-columns: minmax(0, 1fr); }
+}
+@container main (max-width: 700px) {
+  .task-editor .stats { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .plan-pick, .plan-who { flex-basis: 100%; }
+}
+.task-editor > .kpk-how { grid-column: 1 / -1; }
+
+.ed-shares { display: grid; gap: 4px; margin-top: 10px; padding-top: 10px; border-top: 1px solid var(--line); }
+.ed-shares[hidden] { display: none; }
+.ed-share { display: grid; grid-template-columns: 10px minmax(0, 1fr) auto; column-gap: 8px; align-items: center; }
+.ed-share-name { overflow-wrap: anywhere; }
+.ed-share-num { white-space: normal; text-align: right; }
+.ed-crew { grid-column: 1 / -1; display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 12px 24px; }
+.ed-crew-group { display: grid; gap: 6px; align-content: start; min-width: 0; }
+.ed-crew-row { display: flex; align-items: center; gap: 8px; min-width: 0; }
+.ed-crew-row .portrait { width: 26px; height: 26px; }
+.ed-crew-row .portrait img { width: 26px; height: 26px; }
+.ed-crew-name { flex: 1; min-width: 0; overflow-wrap: anywhere; }
+.ed-crew-say { flex: none; max-width: 55%; text-align: right; color: var(--muted); }
+.ed-crew-row.on .ed-crew-say { color: var(--ink); }
+.ed-crew-row.cleared .ed-crew-say { color: var(--grass); }

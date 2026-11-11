@@ -1,0 +1,41 @@
+/* the Forge tab */
+.forge-tab { display: grid; grid-template-columns: minmax(0, 1fr); gap: 12px; min-width: 0; }
+.fg-h { margin: 8px 0 0; font-size: 1.1rem; }
+.fg-speed, .fg-msg, .fg-note { margin: 0; color: var(--muted); white-space: normal; overflow-wrap: anywhere; }
+.fg-warnings { display: grid; gap: 6px; }
+.fg-warn { margin: 0; padding: 8px 12px; border-radius: 8px; background: var(--bad-soft); color: var(--ink); border-left: 3px solid var(--bad); }
+.fg-table-wrap { overflow-x: auto; }
+.fg-table { width: 100%; border-collapse: collapse; font-size: .9rem; font-variant-numeric: tabular-nums; }
+.fg-table th { text-align: left; font-weight: 600; color: var(--muted); padding: 6px 10px; border-bottom: 1px solid var(--line); white-space: nowrap; }
+.fg-table td { padding: 6px 10px; border-bottom: 1px solid var(--line); }
+.fg-table tr.warned td:first-child { box-shadow: inset 3px 0 0 var(--bad); }
+.fg-controls { display: flex; flex-wrap: wrap; align-items: flex-end; gap: 12px; }
+.fg-field { display: grid; gap: 4px; }
+.fg-select { min-width: 180px; }
+.fg-ranges { display: inline-flex; gap: 2px; padding: 2px; border-radius: 8px; background: var(--panel-2); }
+.fg-range { border: 0; background: transparent; color: var(--ink); padding: 5px 12px; border-radius: 6px; cursor: pointer; }
+.fg-range[aria-pressed="true"] { background: var(--panel); font-weight: 600; box-shadow: 0 0 0 1px var(--line); }
+.fg-bags { display: inline-flex; align-items: center; gap: 6px; padding-bottom: 5px; }
+.fg-stats { display: flex; flex-wrap: wrap; gap: 24px; }
+.fg-stats:empty { display: none; }
+.fg-stat { display: grid; gap: 2px; }
+.fg-stat-n { font-size: 1.25rem; font-variant-numeric: tabular-nums; }
+.fg-charts { display: grid; grid-template-columns: minmax(0, 1fr); gap: 8px; min-width: 0; }
+.fg-charts[hidden] { display: none; }
+.fg-title { margin: 8px 0 0; font-size: .95rem; font-weight: 600; }
+.fg-chart { position: relative; min-width: 0; }
+.fg-chart svg { display: block; max-width: 100%; touch-action: pan-y; }
+.fg-grid { stroke: var(--line); stroke-width: 1; }
+.fg-axis { fill: var(--muted); font-size: 11px; font-variant-numeric: tabular-nums; }
+.fg-line { fill: none; stroke: var(--grass); stroke-width: 2; stroke-linejoin: round; stroke-linecap: round; }
+.fg-cross { stroke: var(--muted); stroke-width: 1; }
+.fg-dot { fill: var(--grass); stroke: var(--panel); stroke-width: 2; }
+.fg-col { fill: var(--grass); }
+.fg-hit { fill: transparent; }
+.fg-hit.on { fill: var(--ink); fill-opacity: .08; }
+.fg-ref { stroke: var(--ink); stroke-width: 1.5; stroke-dasharray: 5 4; }
+.fg-ref-text { fill: var(--ink); font-size: 11px; paint-order: stroke; stroke: var(--bg); stroke-width: 3px; }
+.fg-tip { position: absolute; z-index: 5; pointer-events: none; padding: 5px 9px; border-radius: 6px; background: var(--panel); border: 1px solid var(--line); color: var(--ink); font-size: .82rem; white-space: nowrap; box-shadow: 0 2px 8px rgb(0 0 0 / .18); }
+.fg-tip[hidden] { display: none; }
+.fg-details summary { cursor: pointer; color: var(--muted); }
+#tabForge.warned { color: var(--bad); font-weight: 600; }
